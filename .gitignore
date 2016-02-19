@@ -7,6 +7,7 @@ nbproject
 .idea
 .project
 .settings
+parameters.php
 vendor
 composer.phar
 data/cache/*

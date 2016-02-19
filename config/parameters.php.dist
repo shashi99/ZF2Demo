@@ -1,0 +1,39 @@
+<?php
+/**
+ * Configuration parameters 
+ */
+$params = array(
+    
+    // Enabled modules
+    'modules' => array(
+        'Application',
+        'DoctrineModule',
+        'DoctrineORMModule'
+    ),
+    
+    // Database configuration
+    'database_host' => '',
+    'database_port' => 3306,
+    'database_name' => '',
+    'database_user' => '',
+    'database_password' => '',
+    
+    // Caching
+    'cache_enabled' => false,
+    'cache_key' => 'cache',
+    'cache_dir' => __DIR__ . '/../data/cache/',
+    
+    // Mailer configuration
+    'mailer_transport' => 'smtp',
+    'mailer_host' => 'localhost',
+    'mailer_user' => null,
+    'mailer_password' => null,
+    
+    // Logger configuration
+    'logger_enabled' => true,
+    'logger_handler_type' => 'rotating_file',
+    'logger_handler_level' => 'debug',
+    'logger_handler_filename' => __DIR__ . '/../data/logs/app.log',
+    'logger_handler_max_files' => 15
+);
+

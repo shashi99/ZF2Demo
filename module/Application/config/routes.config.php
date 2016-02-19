@@ -5,7 +5,7 @@ $routes = array(
         'options' => array(
             'route' => '/',
             'defaults' => array(
-                'controller' => 'Application\Controller\Index',
+                'controller' => 'IndexController',
                 'action' => 'index'
             )
         )
@@ -16,8 +16,7 @@ $routes = array(
         'options' => array(
             'route' => '/application',
             'defaults' => array(
-                '__NAMESPACE__' => 'Application\Controller',
-                'controller' => 'User',
+                'controller' => 'IndexController',
                 'action' => 'index'
             )
         ),

@@ -17,15 +17,6 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-    	/* $cache = $this->getServiceLocator()->get('RedisCache');
-    	 //echo "";
-    	 $cache->setItem('l',10);
-    	 $gh = $cache->incrementItem('l',1);
-    	 //$cache->flush();
-    	 print_r(get_class_methods($cache));
-    	 echo ($cache->getItem('l'));
-    	 exit;//$cache->getItem('foo');exit;*/
-         $money = new Money(1);
 
     }
 }

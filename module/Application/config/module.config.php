@@ -6,31 +6,7 @@
  * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-namespace Application;
-
 $config = array(
-    'doctrine' => array(
-        'driver' => array(
-            'Application_driver' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
-                'paths' => array(
-                    __DIR__ . '/../src/Application/Entity'
-                )
-            ),
-            'orm_default' => array(
-                'drivers' => array(
-                    'Application\Entity' => 'Application_driver'
-                )
-            ),
-            'orm_log' => array(
-                'drivers' => array(
-                    'Application\Entity' => 'Application_driver'
-                )
-            )
-        )
-    ),
-    
     'translator' => array(
         'locale' => 'en_US',
         'translation_file_patterns' => array(
@@ -43,7 +19,7 @@ $config = array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => Controller\IndexController::class
+            'IndexController' => 'Application\Controller\IndexController',
         )
     ),
     'view_manager' => array(
@@ -61,9 +37,9 @@ $config = array(
         'template_path_stack' => array(
             __DIR__ . '/../view'
         )
-    ),
-  
-);
+    )
+)
+;
 
 // Routing config
 $config = \Zend\Stdlib\ArrayUtils::merge($config, include 'routes.config.php');
