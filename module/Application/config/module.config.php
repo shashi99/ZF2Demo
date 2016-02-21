@@ -20,6 +20,8 @@ $config = array(
     'controllers' => array(
         'invokables' => array(
             'IndexController' => 'Application\Controller\IndexController',
+            'AccountController' => 'Application\Controller\AccountController',
+            'DashboardController' => 'Application\Controller\DashboardController'
         )
     ),
     'view_manager' => array(
@@ -38,8 +40,7 @@ $config = array(
             __DIR__ . '/../view'
         )
     )
-)
-;
+);
 
 // Routing config
 $config = \Zend\Stdlib\ArrayUtils::merge($config, include 'routes.config.php');

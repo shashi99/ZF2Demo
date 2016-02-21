@@ -1,7 +1,7 @@
 <?php
 $routes = array(
     'home' => array(
-        'type' => 'Zend\Mvc\Router\Http\Literal',
+        'type' => 'Literal',
         'options' => array(
             'route' => '/',
             'defaults' => array(
@@ -10,7 +10,36 @@ $routes = array(
             )
         )
     ),
-    
+    'login' => array(
+        'type' => 'Literal',
+        'options' => array(
+            'route' => '/login',
+            'defaults' => array(
+                'controller' => 'AccountController',
+                'action' => 'login'
+            )
+        )
+    ),
+    'logout' => array(
+        'type' => 'Literal',
+        'options' => array(
+            'route' => '/logout',
+            'defaults' => array(
+                'controller' => 'AccountController',
+                'action' => 'logout'
+            )
+        )
+    ),
+    'dashboard' => array(
+        'type' => 'Literal',
+        'options' => array(
+            'route' => '/dashboard',
+            'defaults' => array(
+                'controller' => 'DashboardController',
+                'action' => 'index'
+            )
+        )
+    ),
     'application' => array(
         'type' => 'Literal',
         'options' => array(

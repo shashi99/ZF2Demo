@@ -34,6 +34,9 @@ $params = array(
     'logger_handler_type' => 'rotating_file',
     'logger_handler_level' => 'debug',
     'logger_handler_filename' => __DIR__ . '/../data/logs/app.log',
-    'logger_handler_max_files' => 15
+    'logger_handler_max_files' => 15,
+    
+    // Session
+    'session_remember_me_ttl' => 86400 // 24 hours
 );
 

@@ -45,6 +45,21 @@ return array(
             )
         )
     ),
+    'authentication' => array(
+        'doctrine' => array(
+            'entity_class' => 'Application\Entity\Account',
+            'identity_property' => 'username',
+        ),
+        'session' => array(
+            'remember_me_ttl' => $params['session_remember_me_ttl']
+        )
+    ),
+    'encoder' => array(
+        'password_encoder' => array(
+            'algorithm' => 'bcrypt',
+            'cost' => 10
+        )
+    ),
     'logger' => array(
         'enabled' => $params['logger_enabled'],
         'handler' => array(

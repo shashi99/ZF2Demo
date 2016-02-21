@@ -1,16 +1,20 @@
 <?php
+
 namespace Application\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Application\Repository\UserRepository")
- * @ORM\Table(name="user")
- * 
+ * User
+ *
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="fk_user_1_idx", columns={"account_id"})})
+ * @ORM\Entity
  */
 class User
 {
-   /**
-     * @var Integer
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -18,29 +22,63 @@ class User
     private $id;
 
     /**
-     *
      * @var string
-     * @ORM\Column(name="name",type="string",nullable=false)
-     */
-    private $name;
-
-    /**
      *
-     * @var string
-     * @ORM\Column(name="email",type="string",nullable=false)
+     * @ORM\Column(name="email", type="string", length=45, nullable=true)
      */
     private $email;
 
     /**
-     *
      * @var string
-     * @ORM\Column(name="password",type="string",nullable=false)
+     *
+     * @ORM\Column(name="first_name", type="string", length=45, nullable=false)
      */
-    private $password;
+    private $firstName;
 
     /**
+     * @var string
      *
-     * @return the unknown_type
+     * @ORM\Column(name="last_name", type="string", length=45, nullable=false)
+     */
+    private $lastName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_dt_tm", type="datetime", nullable=false)
+     */
+    private $createDtTm;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="delete_flag", type="boolean", nullable=false)
+     */
+    private $deleteFlag = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usercol", type="string", length=45, nullable=true)
+     */
+    private $usercol;
+
+    /**
+     * @var \Application\Entity\Account
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Account")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="account_id", referencedColumnName="id")
+     * })
+     */
+    private $account;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
      */
     public function getId()
     {
@@ -48,27 +86,23 @@ class User
     }
 
     /**
+     * Set email
      *
-     * @return the unknown_type
+     * @param string $email
+     *
+     * @return User
      */
-    public function getName()
+    public function setEmail($email)
     {
-        return $this->name;
-    }
+        $this->email = $email;
 
-    /**
-     *
-     * @param unknown_type $name            
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
         return $this;
     }
 
     /**
+     * Get email
      *
-     * @return the unknown_type
+     * @return string
      */
     public function getEmail()
     {
@@ -76,31 +110,146 @@ class User
     }
 
     /**
+     * Set firstName
      *
-     * @param unknown_type $email            
+     * @param string $firstName
+     *
+     * @return User
      */
-    public function setEmail($email)
+    public function setFirstName($firstName)
     {
-        $this->email = $email;
+        $this->firstName = $firstName;
+
         return $this;
     }
 
     /**
+     * Get firstName
      *
-     * @return the unknown_type
+     * @return string
      */
-    public function getPassword()
+    public function getFirstName()
     {
-        return $this->password;
+        return $this->firstName;
     }
 
     /**
+     * Set lastName
      *
-     * @param unknown_type $password            
+     * @param string $lastName
+     *
+     * @return User
      */
-    public function setPassword($password)
+    public function setLastName($lastName)
     {
-        $this->password = $password;
+        $this->lastName = $lastName;
+
         return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set createDtTm
+     *
+     * @param \DateTime $createDtTm
+     *
+     * @return User
+     */
+    public function setCreateDtTm($createDtTm)
+    {
+        $this->createDtTm = $createDtTm;
+
+        return $this;
+    }
+
+    /**
+     * Get createDtTm
+     *
+     * @return \DateTime
+     */
+    public function getCreateDtTm()
+    {
+        return $this->createDtTm;
+    }
+
+    /**
+     * Set deleteFlag
+     *
+     * @param boolean $deleteFlag
+     *
+     * @return User
+     */
+    public function setDeleteFlag($deleteFlag)
+    {
+        $this->deleteFlag = $deleteFlag;
+
+        return $this;
+    }
+
+    /**
+     * Get deleteFlag
+     *
+     * @return boolean
+     */
+    public function getDeleteFlag()
+    {
+        return $this->deleteFlag;
+    }
+
+    /**
+     * Set usercol
+     *
+     * @param string $usercol
+     *
+     * @return User
+     */
+    public function setUsercol($usercol)
+    {
+        $this->usercol = $usercol;
+
+        return $this;
+    }
+
+    /**
+     * Get usercol
+     *
+     * @return string
+     */
+    public function getUsercol()
+    {
+        return $this->usercol;
+    }
+
+    /**
+     * Set account
+     *
+     * @param \Application\Entity\Account $account
+     *
+     * @return User
+     */
+    public function setAccount(\Application\Entity\Account $account = null)
+    {
+        $this->account = $account;
+
+        return $this;
+    }
+
+    /**
+     * Get account
+     *
+     * @return \Application\Entity\Account
+     */
+    public function getAccount()
+    {
+        return $this->account;
     }
 }
