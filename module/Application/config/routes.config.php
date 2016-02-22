@@ -10,6 +10,26 @@ $routes = array(
             )
         )
     ),
+    'register' => array(
+        'type' => 'Literal',
+        'options' => array(
+            'route' => '/register',
+            'defaults' => array(
+                'controller' => 'AccountController',
+                'action' => 'register'
+            )
+        )
+    ),
+    'thankyou' => array(
+        'type' => 'Literal',
+        'options' => array(
+            'route' => '/thankyou',
+            'defaults' => array(
+                'controller' => 'AccountController',
+                'action' => 'thankyou'
+            )
+        )
+    ),
     'login' => array(
         'type' => 'Literal',
         'options' => array(

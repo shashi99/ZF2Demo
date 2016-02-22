@@ -1,0 +1,43 @@
+<?php
+$form = $this->registerForm;
+$errorMessage = $this->errorMessage;
+$form->prepare();
+$form->setAttribute('name', 'Register');
+$form->setAttribute('id', 'register');
+$form->setAttribute('method', 'post');
+$form->setAttribute('enctype', 'multipart/form-data');
+?>
+<form method = "post" action ="" id ="register" name = "Register">
+<div class="qg-app-form">
+   
+    <h1>User Account</h1>
+    
+        <label>First Name<span>*</span></label>
+    <?php echo $this->formRow($form->get('first_name')) . "\n"; ?>
+    <p class="ts-error" id="first_nameErrorMsg"></p>
+    <label>Last Name<span>*</span></label>
+    <?php echo $this->formRow($form->get('last_name')) . "\n"; ?>
+    <p class="ts-error" id="last_nameErrorMsg"></p>
+    
+    
+    <label>Email Address<span>*</span></label>
+    <?php echo $this->formRow($form->get('email')) . "\n"; ?>
+    <p class="ts-error" id="emailErrorMsg"></p>
+    
+     <label>User Name<span>*</span></label>
+    <?php echo $this->formRow($form->get('username')) . "\n"; ?>
+    <p class="ts-error" id="user_nameErrorMsg"></p>
+    
+    <label>Password<span>*</span></label>
+    <?php echo $this->formRow($form->get('password')) . "\n"; ?>
+    <p class="ts-error" id="passwordErrorMsg"></p>
+    <label>Confirm Password<span>*</span></label>
+    <?php echo $this->formRow($form->get('confirm_password')) . "\n"; ?>
+    <p class="ts-error" id="confirm_passwordErrorMsg"></p>
+
+    <?php echo $this->formRow($form->get('submit_register')) . "\n"; ?>
+
+    <?php echo $this->form()->closeTag($form); ?>
+</div>
+</form>
+

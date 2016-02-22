@@ -1,9 +1,10 @@
 <?php
-
 namespace Application\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Application\Entity\User;
+
 /**
  * UserRepository
  *
@@ -12,9 +13,9 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class UserRepository extends EntityRepository
 {
+
     public function getUsers()
-    { 
-        
+    {
         $em = $this->getEntityManager();
         $conn = $em->getConnection();
         $query = "Select * from user";
@@ -22,5 +23,21 @@ class UserRepository extends EntityRepository
         
         $userList = $statement->fetchAll();
         return $userList;
+    }
+
+    public function createUser($accountObj, $data)
+    {
+        $em = $this->getEntityManager();
+        
+        $user = new User();
+        $user->setAccount($accountObj)
+            ->setFirstName($data['first_name'])
+            ->setLastName($data['last_name'])
+            ->setEmail($data['email'])
+            ->setCreateDtTm(new \DateTime())
+            ->setUpdateDtTm(new \DateTime());
+        
+        $em->persist($user);
+        $em->flush();
     }
 }

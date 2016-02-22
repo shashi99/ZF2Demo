@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Account
  *
- * @ORM\Table(name="account")
- * @ORM\Entity
+ * @ORM\Table(name="account", uniqueConstraints={@ORM\UniqueConstraint(name="username_UNIQUE", columns={"username"})})
+ * @ORM\Entity(repositoryClass="Application\Repository\AccountRepository")
  */
 class Account
 {
@@ -68,190 +68,96 @@ class Account
      *
      * @ORM\Column(name="delete_flag", type="boolean", nullable=false)
      */
-    private $deleteFlag = '0';
+    private $deleteFlag = '1';
 
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return Account
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string
-     */
     public function getUsername()
     {
         return $this->username;
     }
 
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return Account
-     */
-    public function setPassword($password)
+    public function setUsername($username)
     {
-        $this->password = $password;
-
+        $this->username = $username;
         return $this;
     }
 
-    /**
-     * Get password
-     *
-     * @return string
-     */
     public function getPassword()
     {
         return $this->password;
     }
 
-    /**
-     * Set ssoToken
-     *
-     * @param string $ssoToken
-     *
-     * @return Account
-     */
-    public function setSsoToken($ssoToken)
+    public function setPassword($password)
     {
-        $this->ssoToken = $ssoToken;
-
+        $this->password = $password;
         return $this;
     }
 
-    /**
-     * Get ssoToken
-     *
-     * @return string
-     */
     public function getSsoToken()
     {
         return $this->ssoToken;
     }
 
-    /**
-     * Set resetToken
-     *
-     * @param string $resetToken
-     *
-     * @return Account
-     */
-    public function setResetToken($resetToken)
+    public function setSsoToken($ssoToken)
     {
-        $this->resetToken = $resetToken;
-
+        $this->ssoToken = $ssoToken;
         return $this;
     }
 
-    /**
-     * Get resetToken
-     *
-     * @return string
-     */
     public function getResetToken()
     {
         return $this->resetToken;
     }
 
-    /**
-     * Set lastLoggedinInDtTm
-     *
-     * @param \DateTime $lastLoggedInDtTm
-     *
-     * @return Account
-     */
-    public function setLastLoggedInDtTm($lastLoggedInDtTm)
+    public function setResetToken($resetToken)
     {
-        $this->lastLoggedInDtTm = $lastLoggedInDtTm;
-
+        $this->resetToken = $resetToken;
         return $this;
     }
 
-    /**
-     * Get lastLoggedInDtTm
-     *
-     * @return \DateTime
-     */
     public function getLastLoggedInDtTm()
     {
-        return $this->lastLoggedinDtTm;
+        return $this->lastLoggedInDtTm;
     }
 
-    /**
-     * Set createDtTm
-     *
-     * @param \DateTime $createDtTm
-     *
-     * @return Account
-     */
-    public function setCreateDtTm($createDtTm)
+    public function setLastLoggedInDtTm(\DateTime $lastLoggedInDtTm)
     {
-        $this->createDtTm = $createDtTm;
-
+        $this->lastLoggedInDtTm = $lastLoggedInDtTm;
         return $this;
     }
 
-    /**
-     * Get createDtTm
-     *
-     * @return \DateTime
-     */
     public function getCreateDtTm()
     {
         return $this->createDtTm;
     }
 
-    /**
-     * Set deleteFlag
-     *
-     * @param boolean $deleteFlag
-     *
-     * @return Account
-     */
-    public function setDeleteFlag($deleteFlag)
+    public function setCreateDtTm(\DateTime $createDtTm)
     {
-        $this->deleteFlag = $deleteFlag;
-
+        $this->createDtTm = $createDtTm;
         return $this;
     }
 
-    /**
-     * Get deleteFlag
-     *
-     * @return boolean
-     */
     public function getDeleteFlag()
     {
         return $this->deleteFlag;
     }
-    
-    public function isActive()
+
+    public function setDeleteFlag(boolean $deleteFlag)
     {
+        $this->deleteFlag = $deleteFlag;
+        return $this;
+    }
+    
+    public function isActive(){
         return (!$this->getDeleteFlag()) ? true : false;
     }
+ 
+ 
+
+
 }
+
