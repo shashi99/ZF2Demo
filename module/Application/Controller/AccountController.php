@@ -18,6 +18,7 @@ class AccountController extends AbstractAppController
     public function indexAction()
     {
         return $this->redirect('login');
+
     }
 
     public function loginAction()
