@@ -10,8 +10,10 @@ class DashboardController extends AbstractAppController
     {
         $authService = $this->getServiceLocator()->get('app.authentication');
         if(!$authService->hasIdentity()){
-            return $this->redirect()->toRoute('login');
-        }
+            
+		return $this->redirect()->toRoute('login');
+        
+	}
         $viewParams = array();
         return new ViewModel($viewParams);
     }

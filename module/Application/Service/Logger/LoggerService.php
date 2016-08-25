@@ -20,13 +20,13 @@ class LoggerService
             return false;
         }
         
-        $this->logService->addInfo($message, $context);
+         $this->logService->addInfo($message, $context);
     }
 
     public function warning($message, $context = array())
     {
         if (! $this->config['enabled']) {
-            return false;
+             return false;
         }
         
         $this->logService->addWarning($message, $context);
@@ -43,6 +43,7 @@ class LoggerService
     
     public function critical($message, $context = array())
     {
+
         if (! $this->config['enabled']) {
             return false;
         }

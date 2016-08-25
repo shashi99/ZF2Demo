@@ -33,7 +33,8 @@ class AccountController extends AbstractAppController
         
             if ($result->isValid()) {
                 $redirect = 'dashboard';
-                if ($request->getPost('remember_me') == 1) {
+   
+             if ($request->getPost('remember_me') == 1) {
                     $storage = $authService->getStorage();
                     $storage->setRememberMe();
                     $authService->setStorage($storage);

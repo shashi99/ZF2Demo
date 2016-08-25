@@ -16,8 +16,7 @@ class MonologServiceFactory
         $filename = $handler['filename'];
         $type = $handler['type'];
         $maxFiles = $handler['max_files'];
-      
-        
+              
         switch (strtolower($type)) {
             case 'stream':
                 $handlerObj = new \Monolog\Handler\StreamHandler($filename);
